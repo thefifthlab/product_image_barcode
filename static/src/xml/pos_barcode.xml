@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <!-- Example: Extend Orderline to add barcode under name -->
+    <t t-inherit="point_of_sale.Orderline" t-inherit-mode="extension">
+        <xpath expr="//*[hasclass('product-name')]" position="after">
+            <div t-if="props.line &amp;&amp; props.line.product &amp;&amp; props.line.product.barcode"
+                 style="font-size: 0.75rem; color: #666; margin-top: 4px;">
+                <t t-esc="props.line.product.barcode"/>
+            </div>
+        </xpath>
+    </t>
+
+    <!-- Add more <t t-inherit=...> blocks as needed -->
+
+</templates>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="point_of_sale.ProductCard" t-inherit="point_of_sale.ProductCard" t-inherit-mode="extension" owl="1">
+
+        <xpath expr="//div[hasclass('product-content')]" position="replace">
+            <div class="product-content d-flex flex-column h-100 p-2">
+
+                <!-- Product Name - Limited to 2 lines with proper spacing -->
+                <div class="product-name line-clamp-2 lh-sm mb-2"
+                     style="font-size: 0.93rem; line-height: 1.2; min-height: 42px;">
+                    <t t-esc="props.product.display_name"/>
+                </div>
+
+                <!-- Price + Barcode section pushed to bottom -->
+                <div class="mt-auto">
+                    <div class="product-price fw-bolder text-dark fs-5 mb-1">
+                        <t t-esc="env.utils.formatCurrency(props.product.lst_price)"/>
+                    </div>
+
+                    <div t-if="props.product.barcode" class="product-barcode text-muted small" style="font-size: 0.72rem;">
+                        <i class="fa fa-barcode me-1"/>
+                        <t t-esc="props.product.barcode"/>
+                    </div>
+                </div>
+
+            </div>
+        </xpath>
+
+    </t>
+
+</templates>

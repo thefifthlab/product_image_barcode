@@ -1,0 +1,15 @@
+.orderline-barcode {
+    margin-top: 4px;
+    text-align: left;
+}
+
+.barcode-img {
+    height: 28px;
+    image-rendering: crisp-edges;
+}
+
+.barcode-text {
+    font-size: 11px;
+    color: #666;
+    font-family: monospace;
+}

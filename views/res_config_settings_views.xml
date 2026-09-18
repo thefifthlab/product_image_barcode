@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.pos.price</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="point_of_sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='pos_interface_section']" position="inside">
+                <setting string="Show Product Price" help="Toggle Price visibility on product cards">
+                    <field name="pos_show_product_price"/>
+                </setting>
+            </xpath>
+
+             <xpath expr="//block[@id='pos_interface_section']" position="inside">
+                <setting string="Show Product Barcode" help="Toggle Barcode visibility on product cards">
+                    <field name="pos_show_product_barcode"/>
+                </setting>
+            </xpath>
+
+
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="point_of_sale.Orderline" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('d-flex')][hasclass('justify-content-between')]" position="after">
+            <div class="orderline-barcode text-muted small" t-if="line.productBarcode">
+                <t t-esc="line.productBarcode"/>
+            </div>
+        </xpath>
+    </t>
+</templates>

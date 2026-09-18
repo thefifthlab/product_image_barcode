@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="seq_partner_customer_id_unique" model="ir.sequence">
+            <field name="name">Customer ID Sequence</field>
+            <field name="code">res.partner.customer.id.unique</field>
+            <field name="prefix">C</field>
+            <field name="padding">6</field>
+            <field name="number_next_actual">46067</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_partner_vendor_id_unique" model="ir.sequence">
+            <field name="name">Vendor ID Sequence</field>
+            <field name="code">res.partner.vendor.id.unique</field>
+            <field name="prefix">V</field>
+            <field name="padding">6</field>
+            <field name="number_next_actual">1840</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>
