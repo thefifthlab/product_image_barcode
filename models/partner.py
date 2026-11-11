@@ -6,13 +6,13 @@ class ResPartner(models.Model):
     customer_code = fields.Char(string="Customer Code")
     vendor_code = fields.Char(string="Vendor Code")
 
-    def generate_customer_id(self):
+    def generate_customer_code(self):
         for partner in self:
             if not partner.customer_code:
                 sequence = self.env['ir.sequence'].next_by_code('res.partner.customer.id.unique') or '/'
                 partner.customer_code = sequence
 
-    def generate_vendor_id(self):
+    def generate_vendor_code(self):
         for partner in self:
             if not partner.vendor_code:
                 sequence = self.env['ir.sequence'].next_by_code('res.partner.vendor.id.unique') or '/'
