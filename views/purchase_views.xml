@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Inherit the main RFQ/Purchase Order form view -->
+    <record id="view_purchase_order_form_inherit_image_barcode" model="ir.ui.view">
+        <field name="name">purchase.order.form.inherit.image.barcode</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Target the tree inside order_line field -->
+            <xpath expr="//field[@name='order_line']/list/field[@name='product_id']" position="before">
+
+                <field name="product_barcode"
+                       string="Barcode/ISBN"
+                       optional="show"
+                editable="True"/>
+
+            </xpath>
+
+            <!-- Optional: make image bigger in form view of the line (when you click a line) -->
+            <xpath expr="//field[@name='order_line']/list//field[@name='product_id']" position="after">
+                <field name="product_image_small" widget="image" options='{"preview_image": "image_1920", "size": [48, 48]}'/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

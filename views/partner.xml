@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_inherit_ids" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.ids</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <header>
+                    <button name="generate_customer_id"
+                            type="object"
+                            string="Generate Customer ID"
+                            class="oe_highlight"
+                            invisible="customer_code"/>
+                    <button name="generate_vendor_id"
+                            type="object"
+                            string="Generate Vendor ID"
+                            class="oe_highlight"
+                            invisible="vendor_code"/>
+                </header>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="before">
+                <div class="d-flex gap-3 mb-2" invisible="not customer_code and not vendor_code">
+                    <h3 invisible="not customer_code" class="me-3 text-muted">
+                        <span class="fw-bold">Customer ID:</span>
+                        <field name="customer_code" class="oe_inline" readonly="1"/>
+                    </h3>
+                    <h3 invisible="not vendor_code" class="text-muted">
+                        <span class="fw-bold">Vendor ID:</span>
+                        <field name="vendor_code" class="oe_inline" readonly="1"/>
+                    </h3>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="res_partner_kanban_view_cid" model="ir.ui.view">
+        <field name="name">res.partner.kanban.cust</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="inside">
+                <field name="customer_code"/>
+                <field name="vendor_code"/>
+            </xpath>
+            <xpath expr="//main//field[@name='category_id']" position="after">
+                <div t-if="record.customer_code.raw_value" class="text-muted small">
+                    Customer ID :
+                    <field name="customer_code"/>
+                </div>
+                <div t-if="record.vendor_code.raw_value" class="text-muted small">
+                    Vendor ID :
+                    <field name="vendor_code"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_partner_tree_cid" model="ir.ui.view">
+        <field name="name">res.partner.tree.cust</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='complete_name']" position="before">
+                <field name="customer_code" optional="show"/>
+                <field name="vendor_code" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

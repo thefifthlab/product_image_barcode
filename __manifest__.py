@@ -1,0 +1,32 @@
+{
+    'name': 'Sale Order Line Image and Barcode',
+    'version': '18.0.1.0',
+    'category': 'Sales',
+    'author': "Gbolahan Folarin",
+    'website': "https://www.fifthlab.com",
+    'summary': 'Displays product images and barcodes on Quotation lines',
+    'depends': ['sale', 'product', 'stock', 'point_of_sale', 'sale_stock'],
+    'assets': {
+        'point_of_sale._assets_pos': [
+            'product_image_barcode/static/src/js/order_line.js',
+            # 'product_image_barcode/static/src/js/pos_store_patch.js',
+            'product_image_barcode/static/src/xml/product_card.xml',
+            'product_image_barcode/static/src/xml/orderline_card.xml',
+            'product_image_barcode/static/src/xml/pos_barcode.xml',
+        ],
+    },
+    'data': [
+        'data/data.xml',
+        'views/sale_order_view.xml',
+        'views/purchase_views.xml',
+        'views/res_config_settings_views.xml',
+        'views/product_views.xml',
+        'views/partner.xml',
+        # 'views/stock_report_views.xml',
+        # 'views/barcode_import_views.xml',
+        # 'views/ir_config_parameter.xml',
+    ],
+    'installable': True,
+    'application': False,
+    'license': 'LGPL-3',
+}
