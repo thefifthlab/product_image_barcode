@@ -7,14 +7,14 @@
         <field name="arch" type="xml">
             <xpath expr="//sheet" position="before">
                 <header>
-                    <button name="generate_customer_id"
+                    <button name="generate_customer_code"
                             type="object"
-                            string="Generate Customer ID"
+                            string="Generate Customer Code"
                             class="oe_highlight"
                             invisible="customer_code"/>
-                    <button name="generate_vendor_id"
+                    <button name="generate_vendor_code"
                             type="object"
-                            string="Generate Vendor ID"
+                            string="Generate Vendor Code"
                             class="oe_highlight"
                             invisible="vendor_code"/>
                 </header>
@@ -45,11 +45,11 @@
             </xpath>
             <xpath expr="//main//field[@name='category_id']" position="after">
                 <div t-if="record.customer_code.raw_value" class="text-muted small">
-                    Customer ID :
+                    Customer Code :
                     <field name="customer_code"/>
                 </div>
                 <div t-if="record.vendor_code.raw_value" class="text-muted small">
-                    Vendor ID :
+                    Vendor Code :
                     <field name="vendor_code"/>
                 </div>
             </xpath>
